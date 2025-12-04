@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃健源 | 個人履歷網站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0071e3',
+                        dark: '#1d1d1f',
+                        light: '#f5f5f7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .section-padding {
+            padding: 100px 0;
+        }
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #0071e3;
+        }
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- 導航欄 -->
+    <nav class="fixed w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold">黃健源｜個人履歷</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link font-medium hover:text-primary transition-colors">關於我</a>
+                    <a href="#skills" class="nav-link font-medium hover:text-primary transition-colors">技能</a>
+                    <a href="#experience" class="nav-link font-medium hover:text-primary transition-colors">經歷</a>
+                    <a href="#projects" class="nav-link font-medium hover:text-primary transition-colors">作品</a>
+                    <a href="#contact" class="nav-link font-medium hover:text-primary transition-colors">聯絡</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 手機版選單 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium nav-link">關於我</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium nav-link">技能</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium nav-link">經歷</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium nav-link">作品</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium nav-link">聯絡</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首頁英雄區塊 -->
+    <section class="hero-bg text-white pt-24 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-on-scroll">
+                <img src="https://drive.google.com/file/d/1ZrUxOW9TfokivcQ_B1BucFDeokkBk54P/view?usp=sharing" 
+                     alt="個人照片" 
+                     class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">黃健源</h1>
+                <p class="text-xl md:text-2xl mb-4 max-w-2xl mx-auto">資深系統分析師 / 全端工程師</p>
+                <p class="text-lg mb-10 max-w-3xl mx-auto">
+                    專長於企業系統分析、後端服務設計與前端介面開發，擅長將複雜的商業規則拆解為可維護、可擴充的系統架構，
+                    並在實務專案中落實 Clean Architecture 與良好的程式風格。
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#contact" class="bg-white text-dark px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                        聯絡我
+                    </a>
+                    <a href="#projects" class="bg-transparent border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-dark transition-colors">
+                        查看作品
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我 -->
+    <section id="about" class="section-padding bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">關於我</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold mb-6">我的故事</h3>
+                    <p class="text-lg mb-6 text-gray-700 leading-relaxed">
+                        我從 2021 年開始自學 Web 與後端開發，短短幾年內從助理工程師一路成長為資深系統分析師，主要負責
+                        企業內部系統的架構設計、需求分析與技術整合。在專案中，我常在商業部門與技術團隊之間協調，
+                        將抽象需求轉換為具體的系統設計與實作規格。
+                    </p>
+                    <p class="text-lg mb-6 text-gray-700 leading-relaxed">
+                        技術上熟悉 C# / .NET、React + TypeScript、Oracle 與 PostgreSQL，並實際參與過多資料庫同步、
+                        權限與角色管理平台、企業入口網站重構等大型專案。我特別重視程式碼可維護性，
+                        喜歡使用分層架構與 Clean Architecture 來管理系統複雜度。
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        工作之餘，我會研究投資理財與量化模型、跑步訓練、露營，以及持續學習軟體架構、
+                        雲端與 DevOps 相關技術，讓自己在職涯上維持成長與彈性。
+                    </p>
+                </div>
+                <div class="animate-on-scroll">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">詳細資料</h3>
+                        <ul class="space-y-4">
+                            <li class="flex">
+                                <span class="font-semibold w-24">姓名:</span>
+                                <span>黃健源</span>
+                            </li>
+                            <li class="flex">
+                                <span class="font-semibold w-24">Email:</span>
+                                <span>mark.huang.dev@example.com</span> <!-- TODO: 換成你的真實 Email -->
+                            </li>
+                            <li class="flex">
+                                <span class="font-semibold w-24">電話:</span>
+                                <span>+886 9xx xxx xxx</span> <!-- TODO: 換成你的手機 -->
+                            </li>
+                            <li class="flex">
+                                <span class="font-semibold w-24">地址:</span>
+                                <span>台灣（可遠端 / 混合上班）</span> <!-- TODO: 如需可填實際城市 -->
+                            </li>
+                            <li class="flex">
+                                <span class="font-semibold w-24">學歷:</span>
+                                <span>資訊相關科系（學士），規劃攻讀資工 / 資管碩士</span>
+                            </li>
+                            <li class="flex">
+                                <span class="font-semibold w-24">語言:</span>
+                                <span>中文（母語）、英文（可閱讀技術文件）</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">專業技能</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold mb-8">技術能力</h3>
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">C# / .NET（含 Web API）</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar bg-gray-200">
+                                <div class="skill-progress bg-primary w-[90%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">React / TypeScript / 前端工程化</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar bg-gray-200">
+                                <div class="skill-progress bg-primary w-[85%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">SQL / Oracle / PostgreSQL</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar bg-gray-200">
+                                <div class="skill-progress bg-primary w-[88%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">系統分析與架構設計</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar bg-gray-200">
+                                <div class="skill-progress bg-primary w-[92%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold mb-8">其他技能</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-light p-6 rounded-xl text-center">
+                            <i class="fas fa-diagram-project text-3xl text-primary mb-4"></i>
+                            <h4 class="font-bold text-lg">架構與設計</h4>
+                            <p class="text-gray-600 mt-2">Clean Architecture、分層設計、設計模式</p>
+                        </div>
+                        <div class="bg-light p-6 rounded-xl text-center">
+                            <i class="fas fa-database text-3xl text-primary mb-4"></i>
+                            <h4 class="font-bold text-lg">資料庫與整合</h4>
+                            <p class="text-gray-600 mt-2">Oracle、PostgreSQL、多 DB Link 同步</p>
+                        </div>
+                        <div class="bg-light p-6 rounded-xl text-center">
+                            <i class="fas fa-cloud text-3xl text-primary mb-4"></i>
+                            <h4 class="font-bold text-lg">雲端與 DevOps</h4>
+                            <p class="text-gray-600 mt-2">Azure App Service、CI/CD 基礎</p>
+                        </div>
+                        <div class="bg-light p-6 rounded-xl text-center">
+                            <i class="fas fa-file-alt text-3xl text-primary mb-4"></i>
+                            <h4 class="font-bold text-lg">溝通與文件</h4>
+                            <p class="text-gray-600 mt-2">需求訪談、規格撰寫、技術說明文件</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 經歷 -->
+    <section id="experience" class="section-padding bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">工作經歷</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="relative">
+                <!-- 時間軸線 -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-200 hidden md:block"></div>
+                
+                <div class="space-y-12">
+                    <!-- 經歷項目 1 -->
+                    <div class="flex flex-col md:flex-row items-center animate-on-scroll">
+                        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8 text-right">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <span class="inline-block px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full mb-3">2023 - 現在</span>
+                                <h3 class="text-xl font-bold mb-2">資深系統分析師 / 技術主導</h3>
+                                <h4 class="text-lg font-semibold text-primary mb-3">企業內部系統專案團隊</h4>
+                                <p class="text-gray-700">
+                                    負責企業級系統的架構設計與關鍵模組技術決策，包含主檔維護平台、多資料庫同步機制、
+                                    權限與角色管理、內部入口網站重構等。主導需求訪談、技術方案評估，
+                                    並協助團隊導入較乾淨的分層架構與程式風格。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                    
+                    <!-- 經歷項目 2 -->
+                    <div class="flex flex-col md:flex-row items-center animate-on-scroll">
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <span class="inline-block px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full mb-3">2021 - 2023</span>
+                                <h3 class="text-xl font-bold mb-2">系統分析師 / .NET 工程師</h3>
+                                <h4 class="text-lg font-semibold text-primary mb-3">系統整合與顧問公司</h4>
+                                <p class="text-gray-700">
+                                    負責後端 API、排程服務與前端頁面開發，使用 C# / .NET、React、Oracle / PostgreSQL
+                                    完成多個企業專案。參與資料同步流程設計、PL/SQL / SQL 優化，以及既有系統重構與維運。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 經歷項目 3 -->
+                    <div class="flex flex-col md:flex-row items-center animate-on-scroll">
+                        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8 text-right">
+                            <div class="bg-white p-6 rounded-xl shadow-md">
+                                <span class="inline-block px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full mb-3">2019 - 2021</span>
+                                <h3 class="text-xl font-bold mb-2">軟體工程師</h3>
+                                <h4 class="text-lg font-semibold text-primary mb-3">資訊服務相關產業</h4>
+                                <p class="text-gray-700">
+                                    負責一般 Web 專案與內部工具開發，累積 HTML、CSS、JavaScript 及後端基礎經驗。
+                                    從實際專案中學習與 PM、使用者溝通，逐步建立系統思維與架構觀念。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集 -->
+    <section id="projects" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">作品集</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                    以下是我實際參與或自行開發的幾個代表性專案，涵蓋企業內部系統、資料同步平台與投資工具等領域，
+                    展現從系統分析、後端設計到前端實作的完整能力。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 作品 1 -->
+                <div class="project-card bg-light rounded-2xl overflow-hidden shadow-lg animate-on-scroll">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-purple-500"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">企業主檔與權限管理平台</h3>
+                        <p class="text-gray-700 mb-4">
+                            建立統一的主檔維護與角色 / 權限管理平台，整合多個既有系統的資料，
+                            透過清楚的異動流程與簽核機制，降低人工作業錯誤並提升維護效率。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary text-white text-xs rounded-full">C# / .NET</span>
+                            <span class="px-3 py-1 bg-primary text-white text-xs rounded-full">Oracle</span>
+                            <span class="px-3 py-1 bg-primary text-white text-xs rounded-full">React</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-primary font-semibold hover:underline">專案說明文件</a> <!-- TODO: 有連結可填 -->
+                            <a href="#" class="text-primary font-semibold hover:underline">Demo / 截圖</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 作品 2 -->
+                <div class="project-card bg-light rounded-2xl overflow-hidden shadow-lg animate-on-scroll">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-blue-500"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">多資料庫同步與排程平台</h3>
+                        <p class="text-gray-700 mb-4">
+                            設計並實作一套可配置的同步機制，將主系統的主檔資料同步至多個外部資料庫，
+                            包含錯誤處理、重試機制與詳細 Log 紀錄，顯著降低維運人員負擔。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary text-white text-xs rounded-full">Oracle PL/SQL</span>
+                            <span class="px-3 py-1 bg-primary text-white text-xs rounded-full">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-primary text-white text-xs rounded-full">排程服務</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-primary font-semibold hover:underline">技術設計說明</a>
+                            <a href="#" class="text-primary font-semibold hover:underline">架構示意圖</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 作品 3 -->
+                <div class="project-card bg-light rounded-2xl overflow-hidden shadow-lg animate-on-scroll">
+                    <div class="h-48 bg-gradient-to-r from-yellow-400 to-red-500"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">個人投資組合與股價模擬工具</h3>
+                        <p class="text-gray-700 mb-4">
+                            針對台股與 ETF 建立的投資紀錄與試算工具，支援股利、報酬率、長期持有情境試算，
+                            結合簡單的統計 / 模型概念，協助自己做中長期投資決策。
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-primary text-white text-xs rounded-full">React</span>
+                            <span class="px-3 py-1 bg-primary text-white text-xs rounded-full">TypeScript</span>
+                            <span class="px-3 py-1 bg-primary text-white text-xs rounded-full">Charts / Visualization</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-primary font-semibold hover:underline">Side Project 介紹</a>
+                            <a href="#" class="text-primary font-semibold hover:underline">GitHub</a> <!-- TODO: 有 Repo 再填 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡方式 -->
+    <section id="contact" class="section-padding bg-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">聯絡我</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
+                <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+                    如果你正在尋找一位能同時理解「商業需求」與「技術實作」的系統分析 / 工程師，
+                    歡迎與我聯絡。無論是企業專案、系統重構或 Side Project 合作，都很樂意一起討論。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-bold mb-8">聯絡資訊</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary p-3 rounded-full text-white mr-4">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Email</h4>
+                                <p class="text-gray-700">mark.huang.dev@example.com</p> <!-- TODO: 換成你的 Email -->
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary p-3 rounded-full text-white mr-4">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">電話</h4>
+                                <p class="text-gray-700">+886 9xx xxx xxx</p> <!-- TODO: 換成你的手機 -->
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary p-3 rounded-full text-white mr-4">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">地址</h4>
+                                <p class="text-gray-700">台灣（遠端 / 混合模式皆可）</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h4 class="font-bold text-lg mb-4">社群媒體</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon bg-white p-3 rounded-full text-gray-700 shadow-md hover:text-primary transition-all">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon bg-white p-3 rounded-full text-gray-700 shadow-md hover:text-primary transition-all">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon bg-white p-3 rounded-full text-gray-700 shadow-md hover:text-primary transition-all">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon bg-white p-3 rounded-full text-gray-700 shadow-md hover:text-primary transition-all">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">發送訊息</h3>
+                        <form>
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="subject" class="block text-gray-700 font-medium mb-2">主旨</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">訊息</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                發送訊息
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">黃健源</h3>
+                <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                    以系統思維面對每一個需求，讓程式碼不只是「能動」，而是「好維護、可擴充、講得清楚」。
+                    持續在架構、投資、與人生節奏之間找到平衡。
+                </p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+                <div class="border-t border-gray-800 pt-8">
+                    <p class="text-gray-500">
+                        &copy; 2025 黃健源個人網站. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 手機版選單切換
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // 滾動動畫
+        function animateElements() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // 初始檢查
+        window.addEventListener('scroll', animateElements);
+        window.addEventListener('load', animateElements);
+
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 關閉手機選單
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
